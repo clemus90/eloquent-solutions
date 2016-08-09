@@ -1,0 +1,3 @@
+Adding the exports object to the cache before runing the code contained on the module, if the module respects the rule of
+not override the exports object this reference will be consistent, and if the module doesn't access the circular reference
+until the module is completely loaded there will not be broken references to not existing properties.

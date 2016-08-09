@@ -1,0 +1,26 @@
+Module "Spatial"
+
+  Vector
+  Grid
+  directions
+  directionsNames
+  dirPlus
+
+Module "World"
+
+  randomElement
+  World
+  LifeLikeWorld
+  View
+  elementFromChar
+  charFromElement
+
+Module "Critters"
+
+  BouncingCritter
+  Wall
+  WallFollower
+  Plant
+  PlantEater
+  SmartPlantEater
+  Tiger
