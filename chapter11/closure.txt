@@ -1,0 +1,2 @@
+When creating the inner function to be returned, the Line which creates the localEnv, uses the current environment as prototype,
+By doing so, a new scope is created but the outer scope is mantained as a prototype of the current one.
