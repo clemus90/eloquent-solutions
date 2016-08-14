@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <div id="wrapper">
+    <div data-tabname="one">Tab one</div>
+    <div data-tabname="two">Tab two</div>
+    <div data-tabname="three">Tab three</div>
+  </div>
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
+  <script type="text/javascript" src="tabs.js"></script>
+  <script>
+    asTabs(document.querySelector("#wrapper"));
+  </script>
+</body>
+</html>
