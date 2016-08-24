@@ -40,5 +40,7 @@ function spiral(){}
 function star(){}
 
 trapezoid(cx,0,0,100,100);
+cx.fillStyle = 'red';
 diamond(cx,125,0,100);
+cx.fillStyle = 'black';
 zigzag(cx,250,0,100,100,10);
