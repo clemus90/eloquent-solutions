@@ -36,9 +36,70 @@ function zigzag(ctx, x, y, width, height, ends){
   }
   ctx.stroke();
 }
-function spiral(){}
-function star(){}
+function spiral(ctx, x, y, r){
+  var currentAngle = Math.PI * 0.25;
+  var angleStep = Math.PI * -0.1;
+  var radiusRateChange = (94.0 / 95.0);
+  var xIni, yIni, xEnd, yEnd, xControl, yControl;
+  var centerx = x + r, centery = y + r;
+  ctx.beginPath();
+  var init = false;
+  while(r > 5){ 
+    xIni = (Math.cos(currentAngle) * r) + centerx;
+    yIni = (Math.sin(currentAngle) * r) + centery;
+    if(!init){
+      ctx.moveTo(xIni, yIni);
+      init = true;
+
+    }
+    currentAngle = currentAngle + (angleStep / 2.0);
+
+    r =  radiusRateChange * r;
+
+    
+    xControl = (Math.cos(currentAngle) * r) + centerx;
+    yControl = (Math.sin(currentAngle) * r) + centery;
+    currentAngle = currentAngle + (angleStep / 2.0);
+
+    r =  radiusRateChange * r;
+
+    xEnd = (Math.cos(currentAngle) * r) + centerx;
+    yEnd = (Math.sin(currentAngle) * r) + centery;
+
+    ctx.arcTo(xControl, yControl, xEnd, yEnd, r);
+    
+  }
+  cx.stroke();
+  cx.closePath();
+
+}
+function star(ctx, x, y, r){
+  ctx.save();
+
+  ctx.translate(x + r, y + r);
+  var currentAngle = 0;
+  var angleStep = Math.PI * (0.25);
+
+  ctx.beginPath();
+  ctx.moveTo(r, 0);
+  var newX, newY;
+  while (currentAngle < Math.PI * 2){
+    currentAngle += angleStep;
+    newX = Math.cos(currentAngle) * r;
+    newY = Math.sin(currentAngle) * r;
+    ctx.quadraticCurveTo(0,0,newX, newY);
+  }
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.restore();
+}
 
 trapezoid(cx,0,0,100,100);
+cx.fillStyle = "red";
 diamond(cx,125,0,100);
 zigzag(cx,250,0,100,100,10);
+cx.fillStyle = "blue";
+cx.strokeStyle = "black"
+spiral(cx,375,0,50);
+star(cx,500,0,50);
