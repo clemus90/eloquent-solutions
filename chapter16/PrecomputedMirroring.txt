@@ -1,0 +1,1 @@
+One better way to render transformed images, instead of transforming it every time needed, is to do it once and saving that in a canvas element, then including it every time we need the transformed version.
