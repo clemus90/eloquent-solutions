@@ -1,0 +1,15 @@
+{
+  "name": "a-public-space-on-the-web",
+  "version": "1.0.0",
+  "description": "A public space on the web",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Christian Lemus",
+  "license": "ISC",
+  "devDependencies": {
+    "mime": "^1.3.4"
+  }
+}
