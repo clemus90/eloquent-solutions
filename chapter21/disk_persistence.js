@@ -1,10 +1,19 @@
 var http = require("http");
 var Router = require("./router");
 var ecstatic = require("ecstatic");
-var fs = require("")
+var fs = require("fs");
 
 var fileServer = ecstatic({root: "./public"});
 var router = new Router();
+
+var talks 
+
+try{
+  talks = JSON.parse(fs.readFileSync('data.json').toString());
+}catch(e){
+  console.log("Fails to log from storage", e);
+  talks = Object.create(null);
+}
 
 http.createServer(function(request, response) {
   if (!router.resolve(request, response))
@@ -22,8 +31,6 @@ function respondJSON(response, status, data) {
   respond(response, status, JSON.stringify(data),
           "application/json");
 }
-
-var talks = Object.create(null);
 
 router.add("GET", /^\/talks\/([^\/]+)$/,
            function(request, response, title) {
@@ -173,12 +180,8 @@ function getChangedTalks(since) {
 }
 
 function persistChanges(){
-  var persistence = {}
-  persistence.talks = talks;
-  persistence.waiting = waiting;
-  persistence.changes = changes;
 
-  fs.writeFile("/data", JSON.stringify(persistence), function(err){
+  fs.writeFile("data.json", JSON.stringify(talks), { flag: 'w'}, function(err){
     if(err){
       console.log(err);
       return;
