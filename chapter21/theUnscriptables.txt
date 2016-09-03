@@ -1,0 +1,1 @@
+If the client has Javascript deactivated, we need generate the dynamic content from the server and provide a html document with the data already included, there is only support for POST and GET in a browser with Javascript disabled, so the server logic needs to be rewritten.
